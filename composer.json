@@ -1,0 +1,13 @@
+{
+    "name": "billythekid/v12finance",
+    "description": "PHP Wwrapper for the V12 Retail Finance REST API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Billy Fagan",
+            "email": "billy@billyfagan.co.uk"
+        }
+    ],
+    "require": {}
+}
