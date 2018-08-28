@@ -1,13 +1,24 @@
 {
-    "name": "billythekid/v12finance",
-    "description": "PHP Wwrapper for the V12 Retail Finance REST API",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Billy Fagan",
-            "email": "billy@billyfagan.co.uk"
-        }
-    ],
-    "require": {}
+  "name": "billythekid/v12finance",
+  "description": "PHP Wwrapper for the V12 Retail Finance REST API",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Billy Fagan",
+      "email": "billy@billyfagan.co.uk"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^6.3",
+    "ext-json": "^1.6",
+    "php": "^7.1"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "billythekid\\v12finance\\": "src/"
+    }
+  }
 }
