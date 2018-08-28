@@ -1,3 +1,4 @@
 .idea/
 vendor/
-index.php
+public/index.php
+public/docs

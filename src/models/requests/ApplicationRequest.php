@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: billyfagan
- * Date: 28/08/2018
- * Time: 11:38
+ * Application Request Class
  */
 
 namespace billythekid\v12finance\models\requests;
@@ -14,13 +11,46 @@ use billythekid\v12finance\models\Order;
 use billythekid\v12finance\models\Retailer;
 use JsonSerializable;
 
+/**
+ * Class ApplicationRequest
+ *
+ * @package billythekid\v12finance\models\requests
+ */
 class ApplicationRequest implements JsonSerializable
 {
+  /**
+   * The retailer
+   *
+   * @var Retailer
+   */
   private $retailer;
+  /**
+   * The order
+   *
+   * @var Order
+   */
   private $order;
+  /**
+   * The customer (optional)
+   *
+   * @var Customer
+   */
   private $customer;
+  /**
+   * Whether to wait for a decision
+   *
+   * @var bool
+   */
   private $waitForDecision;
 
+  /**
+   * ApplicationRequest constructor.
+   *
+   * @param Retailer      $retailer
+   * @param Order         $order
+   * @param Customer|null $customer
+   * @param bool          $waitForDecision
+   */
   public function __construct(Retailer $retailer, Order $order, Customer $customer = null, $waitForDecision = false)
   {
     $this->retailer        = $retailer;
@@ -30,6 +60,8 @@ class ApplicationRequest implements JsonSerializable
   }
 
   /**
+   * Gets the retailer
+   *
    * @return Retailer
    */
   public function getRetailer(): Retailer
@@ -38,6 +70,8 @@ class ApplicationRequest implements JsonSerializable
   }
 
   /**
+   * Gets the order
+   *
    * @return Order
    */
   public function getOrder(): Order
@@ -46,6 +80,8 @@ class ApplicationRequest implements JsonSerializable
   }
 
   /**
+   * Gets the customer
+   *
    * @return Customer
    */
   public function getCustomer(): Customer
@@ -54,6 +90,8 @@ class ApplicationRequest implements JsonSerializable
   }
 
   /**
+   * Gets whether to wait for a decision or not
+   *
    * @return bool
    */
   public function isWaitForDecision(): bool

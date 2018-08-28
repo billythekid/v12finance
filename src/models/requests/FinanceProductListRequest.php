@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: billyfagan
- * Date: 28/08/2018
- * Time: 14:58
+ * Objects of this class represent a request to list the financial products available to the retailer
  */
 
 namespace billythekid\v12finance\models\requests;
@@ -12,19 +9,31 @@ namespace billythekid\v12finance\models\requests;
 use billythekid\v12finance\models\Retailer;
 use JsonSerializable;
 
+/**
+ * Class FinanceProductListRequest
+ *
+ * @package billythekid\v12finance\models\requests
+ */
 class FinanceProductListRequest implements JsonSerializable
 {
   /**
+   * The retailer
    * @var Retailer
    */
   private $retailer;
 
+  /**
+   * FinanceProductListRequest constructor.
+   *
+   * @param Retailer $retailer
+   */
   public function __construct(Retailer $retailer)
   {
     $this->retailer = $retailer;
   }
 
   /**
+   * Gets the retailer
    * @return Retailer
    */
   public function getRetailer(): Retailer

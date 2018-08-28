@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: billyfagan
- * Date: 28/08/2018
- * Time: 13:49
+ * Objects of this class represent an error from the V12 server
  */
 
 namespace billythekid\v12finance\models\responses;
@@ -11,10 +8,30 @@ namespace billythekid\v12finance\models\responses;
 
 use JsonSerializable;
 
+/**
+ * Class ResponseError
+ *
+ * @package billythekid\v12finance\models\responses
+ */
 class ResponseError implements JsonSerializable
 {
+  /**
+   * Error code
+   *
+   * @var
+   */
   private $code;
+  /**
+   * Description
+   *
+   * @var
+   */
   private $description;
+  /**
+   * Reference
+   *
+   * @var
+   */
   private $reference;
 
   /**
@@ -33,6 +50,8 @@ class ResponseError implements JsonSerializable
   }
 
   /**
+   * Gets the error code
+   *
    * @return mixed
    */
   public function getCode()
@@ -41,6 +60,8 @@ class ResponseError implements JsonSerializable
   }
 
   /**
+   * Gets the description
+   *
    * @return mixed
    */
   public function getDescription()
@@ -49,6 +70,8 @@ class ResponseError implements JsonSerializable
   }
 
   /**
+   * Gets the reference
+   *
    * @return mixed
    */
   public function getReference()

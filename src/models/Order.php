@@ -1,30 +1,77 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: billyfagan
- * Date: 28/08/2018
- * Time: 11:32
+ * Objects of this class represent an order
  */
 
 namespace billythekid\v12finance\models;
 
-
 use JsonSerializable;
 
+/**
+ * Class Order
+ *
+ * @package billythekid\v12finance\models
+ */
 class Order implements JsonSerializable
 {
+  /**
+   * Cash price
+   *
+   * @var float
+   */
   private $cashPrice = 0.0;
+  /**
+   * Deposit amount
+   *
+   * @var float
+   */
   private $deposit = 0.0;
+  /**
+   * Duplicate sales reference method
+   *
+   * @var string
+   */
   private $duplicateSalesReferenceMethod = "ShowError";
+  /**
+   * Product GUID
+   *
+   * @var string
+   */
   private $productGuid = '';
+  /**
+   * Product ID
+   *
+   * @var string
+   */
   private $productId = '';
+  /**
+   * Sales reference
+   *
+   * @var string
+   */
   private $salesReference = '';
+  /**
+   * V Link
+   *
+   * @var bool
+   */
   private $vLink = false;
+  /**
+   * IP address
+   *
+   * @var string
+   */
   private $ipAddress = '';
-  /* @var $lines OrderLine[] */
+  /**
+   * Any line items
+   *
+   * @var $lines OrderLine[]
+   */
   private $lines = [];
 
   /**
+   * Gets the cash price
+   *
    * @return float
    */
   public function getCashPrice(): float
@@ -34,6 +81,8 @@ class Order implements JsonSerializable
 
 
   /**
+   * Gets the deposit
+   *
    * @return float
    */
   public function getDeposit(): float
@@ -43,6 +92,8 @@ class Order implements JsonSerializable
 
 
   /**
+   * Gets the duplicate sales reference method
+   *
    * @return string
    */
   public function getDuplicateSalesReferenceMethod(): string
@@ -52,6 +103,8 @@ class Order implements JsonSerializable
 
 
   /**
+   * Gets the product GUID
+   *
    * @return string
    */
   public function getProductGuid(): string
@@ -61,6 +114,8 @@ class Order implements JsonSerializable
 
 
   /**
+   * Gets the product ID
+   *
    * @return string
    */
   public function getProductId(): string
@@ -70,6 +125,8 @@ class Order implements JsonSerializable
 
 
   /**
+   * Gets the sales reference
+   *
    * @return string
    */
   public function getSalesReference(): string
@@ -79,6 +136,8 @@ class Order implements JsonSerializable
 
 
   /**
+   * Determines if this has a V link
+   *
    * @return bool
    */
   public function isVLink(): bool
@@ -88,6 +147,8 @@ class Order implements JsonSerializable
 
 
   /**
+   * Gets the IP address
+   *
    * @return string
    */
   public function getIpAddress(): string
@@ -97,6 +158,8 @@ class Order implements JsonSerializable
 
 
   /**
+   * Gets the line items
+   *
    * @return OrderLine[]
    */
   public function getLines(): array
@@ -105,6 +168,8 @@ class Order implements JsonSerializable
   }
 
   /**
+   * Sets the cash price
+   *
    * @param float $cashPrice
    * @return Order
    */
@@ -116,6 +181,8 @@ class Order implements JsonSerializable
   }
 
   /**
+   * Sets the deposit
+   *
    * @param float $deposit
    * @return Order
    */
@@ -127,6 +194,8 @@ class Order implements JsonSerializable
   }
 
   /**
+   * Sets the duplicate sales reference method
+   *
    * @param string $duplicateSalesReferenceMethod
    * @return Order
    */
@@ -138,6 +207,8 @@ class Order implements JsonSerializable
   }
 
   /**
+   * Sets the product GUID
+   *
    * @param string $productGuid
    * @return Order
    */
@@ -149,6 +220,8 @@ class Order implements JsonSerializable
   }
 
   /**
+   * Sets the product ID
+   *
    * @param string $productId
    * @return Order
    */
@@ -160,6 +233,8 @@ class Order implements JsonSerializable
   }
 
   /**
+   * Sets the sales reference
+   *
    * @param string $salesReference
    * @return Order
    */
@@ -171,6 +246,8 @@ class Order implements JsonSerializable
   }
 
   /**
+   * Sets the V link
+   *
    * @param bool $vLink
    * @return Order
    */
@@ -182,6 +259,8 @@ class Order implements JsonSerializable
   }
 
   /**
+   * Sets the IP address
+   *
    * @param string $ipAddress
    * @return Order
    */
@@ -193,6 +272,8 @@ class Order implements JsonSerializable
   }
 
   /**
+   * Sets the order lines
+   *
    * @param OrderLine[] $lines
    * @return Order
    */

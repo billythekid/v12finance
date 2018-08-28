@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: billyfagan
- * Date: 28/08/2018
- * Time: 11:00
+ * Objects of this class represent a customer
  */
 
 namespace billythekid\v12finance\models;
@@ -12,15 +9,47 @@ namespace billythekid\v12finance\models;
 use billythekid\v12finance\models\exceptions\InvalidTelephoneException;
 use JsonSerializable;
 
+/**
+ * Class Customer
+ *
+ * @package billythekid\v12finance\models
+ */
 class Customer implements JsonSerializable
 {
+  /**
+   * Email
+   *
+   * @var string
+   */
   private $emailAddress = '';
+  /**
+   * First name
+   *
+   * @var string
+   */
   private $firstName = '';
+  /**
+   * Last name
+   *
+   * @var string
+   */
   private $lastName = '';
+  /**
+   * Home phone
+   *
+   * @var array
+   */
   private $homeTelephone = ['Code' => '', 'Number' => ''];
+  /**
+   * Mobile phone
+   *
+   * @var array
+   */
   private $mobileTelephone = ['Code' => '', 'Number' => ''];
 
   /**
+   * Sets the email
+   *
    * @param string $emailAddress
    * @return Customer
    */
@@ -32,6 +61,8 @@ class Customer implements JsonSerializable
   }
 
   /**
+   * Sets the first name
+   *
    * @param string $firstName
    * @return Customer
    */
@@ -43,6 +74,8 @@ class Customer implements JsonSerializable
   }
 
   /**
+   * Sets the last name
+   *
    * @param string $lastName
    * @return Customer
    */
@@ -54,6 +87,8 @@ class Customer implements JsonSerializable
   }
 
   /**
+   * Sets the home phone
+   *
    * @param array $homeTelephone
    * @return Customer
    * @throws InvalidTelephoneException
@@ -69,6 +104,8 @@ class Customer implements JsonSerializable
   }
 
   /**
+   * Sets the mobile phone
+   *
    * @param array $mobileTelephone
    * @return Customer
    * @throws InvalidTelephoneException
@@ -84,6 +121,8 @@ class Customer implements JsonSerializable
   }
 
   /**
+   * Gets the email
+   *
    * @return string
    */
   public function getEmailAddress(): string
@@ -92,6 +131,8 @@ class Customer implements JsonSerializable
   }
 
   /**
+   * Gets the first name
+   *
    * @return string
    */
   public function getFirstName(): string
@@ -100,6 +141,8 @@ class Customer implements JsonSerializable
   }
 
   /**
+   * Gets the last name
+   *
    * @return string
    */
   public function getLastName(): string
@@ -108,6 +151,8 @@ class Customer implements JsonSerializable
   }
 
   /**
+   * Gets the home phone
+   *
    * @return array
    */
   public function getHomeTelephone(): array
@@ -116,6 +161,8 @@ class Customer implements JsonSerializable
   }
 
   /**
+   * Gets the mobile phone
+   *
    * @return array
    */
   public function getMobileTelephone(): array
@@ -125,6 +172,8 @@ class Customer implements JsonSerializable
 
 
   /**
+   * Validates a telephone number has both a 'code' and 'number' parameter
+   *
    * @param $telephoneNumber
    * @throws InvalidTelephoneException
    */

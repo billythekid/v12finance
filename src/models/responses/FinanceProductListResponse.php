@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: billyfagan
- * Date: 28/08/2018
- * Time: 14:59
+ * Objects of this class represent a finance products list response from the V12 server
  */
 
 namespace billythekid\v12finance\models\responses;
@@ -13,10 +10,25 @@ use billythekid\v12finance\models\FinanceProduct;
 use JsonSerializable;
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * Class FinanceProductListResponse
+ *
+ * @package billythekid\v12finance\models\responses
+ */
 class FinanceProductListResponse implements JsonSerializable
 {
 
+  /**
+   * Errors
+   *
+   * @var array
+   */
   private $errors = [];
+  /**
+   * Finance products
+   *
+   * @var array
+   */
   private $financeProducts = [];
 
   /**
@@ -61,6 +73,8 @@ class FinanceProductListResponse implements JsonSerializable
 
 
   /**
+   * Gets the errors
+   *
    * @return array
    */
   public function getErrors(): array
@@ -69,6 +83,8 @@ class FinanceProductListResponse implements JsonSerializable
   }
 
   /**
+   * Gets the financial products available
+   *
    * @return array
    */
   public function getFinanceProducts(): array

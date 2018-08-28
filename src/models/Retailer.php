@@ -1,16 +1,45 @@
 <?php
+/**
+ * Objects of this class represent a retailer
+ */
 
 namespace billythekid\v12finance\models;
 
-
 use JsonSerializable;
 
+/**
+ * Class Retailer
+ *
+ * @package billythekid\v12finance\models
+ */
 class Retailer implements JsonSerializable
 {
+  /**
+   * The retailer's authentication key
+   *
+   * @var null
+   */
   private $authenticationKey;
+  /**
+   * The retailer's GUID
+   *
+   * @var null
+   */
   private $retailerGuid;
+  /**
+   * The retailer's ID
+   *
+   * @var null
+   */
   private $retailerId;
 
+  /**
+   * Retailer constructor.
+   *
+   * @param null $authenticationKey
+   * @param null $retailerGuid
+   * @param null $retailerId
+   */
   public function __construct($authenticationKey = null, $retailerGuid = null, $retailerId = null)
   {
     $this->authenticationKey = $authenticationKey;
@@ -19,6 +48,8 @@ class Retailer implements JsonSerializable
   }
 
   /**
+   * Gets the authentication key
+   *
    * @return string
    */
   public function getAuthenticationKey()
@@ -27,6 +58,8 @@ class Retailer implements JsonSerializable
   }
 
   /**
+   * Gets the GUID
+   *
    * @return string
    */
   public function getRetailerGuid()
@@ -35,6 +68,8 @@ class Retailer implements JsonSerializable
   }
 
   /**
+   * Gets the ID
+   *
    * @return string
    */
   public function getRetailerId()

@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: billyfagan
- * Date: 28/08/2018
- * Time: 15:05
+ * Objects of this class represent a financial product (a V12 product)
  */
 
 namespace billythekid\v12finance\models;
@@ -20,79 +17,98 @@ class FinanceProduct implements JsonSerializable
 {
 
   /**
+   * APR rate
    * @var float
    */
   private $apr = 0.0;
   /**
+   * Calculation factor
    * @var float
    */
   private $calculationFactor = 0.0;
   /**
+   * Deferred period (months)
    * @var int
    */
   private $deferredPeriod = 0;
   /**
+   * Product description
    * @var string
    */
   private $description = '';
   /**
+   * Document fee
    * @var float
    */
   private $documentFee = 0.0;
   /**
+   * Document fee collection month
    * @var int
    */
   private $documentFeeCollectionMonth = 0;
   /**
-   * @var int
+   * Maximum document fee
+   * @var float
    */
-  private $documentFeeMaximum = 0;
+  private $documentFeeMaximum = 0.0;
   /**
-   * @var int
+   * Minimum document fee
+   * @var float
    */
-  private $documentFeeMinimum = 0;
+  private $documentFeeMinimum = 0.0;
   /**
+   * Maximum loan amount that this product is valid for
    * @var float
    */
   private $maxLoan = 0.0;
   /**
+   * Minimum loan amount that this product is valid for
    * @var float
    */
   private $minLoan = 0.0;
   /**
+   * Monthly rate
    * @var float
    */
   private $monthlyRate = 0.0;
   /**
+   * Months
    * @var int
    */
-  private $months = 12;
+  private $months = 0;
   /**
+   * Product name
    * @var string
    */
   private $name = '';
   /**
+   * Option period
    * @var int
    */
   private $optionPeriod = 0;
   /**
+   * Product GUID
    * @var string
    */
   private $productGuid = '';
   /**
-   * @var int
+   * Product ID
+   * @var float
    */
-  private $productId = 0;
+  private $productId = 0.0;
   /**
-   * @var int
+   * Service fee
+   * @var float
    */
-  private $serviceFee = 0;
+  private $serviceFee = 0.0;
   /**
+   * Tag
    * @var string
    */
   private $tag = '';
 
   /**
+   * Set the APR
    * @param float $apr
    * @return FinanceProduct
    */
@@ -104,6 +120,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the calculation factor
    * @param float $calculationFactor
    * @return FinanceProduct
    */
@@ -115,6 +132,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the deferred period
    * @param int $deferredPeriod
    * @return FinanceProduct
    */
@@ -126,6 +144,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the product description
    * @param string $description
    * @return FinanceProduct
    */
@@ -137,6 +156,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the document fee
    * @param float $documentFee
    * @return FinanceProduct
    */
@@ -148,6 +168,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the document fee collection month
    * @param int $documentFeeCollectionMonth
    * @return FinanceProduct
    */
@@ -159,10 +180,11 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
-   * @param int $documentFeeMaximum
+   * Set the maximum document fee
+   * @param float $documentFeeMaximum
    * @return FinanceProduct
    */
-  public function setDocumentFeeMaximum(int $documentFeeMaximum): FinanceProduct
+  public function setDocumentFeeMaximum(float $documentFeeMaximum): FinanceProduct
   {
     $this->documentFeeMaximum = $documentFeeMaximum;
 
@@ -170,10 +192,11 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
-   * @param int $documentFeeMinimum
+   * Set the minimum document fee
+   * @param float $documentFeeMinimum
    * @return FinanceProduct
    */
-  public function setDocumentFeeMinimum(int $documentFeeMinimum): FinanceProduct
+  public function setDocumentFeeMinimum(float $documentFeeMinimum): FinanceProduct
   {
     $this->documentFeeMinimum = $documentFeeMinimum;
 
@@ -181,6 +204,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the maximum loan amount
    * @param float $maxLoan
    * @return FinanceProduct
    */
@@ -192,6 +216,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the minimum loan amount
    * @param float $minLoan
    * @return FinanceProduct
    */
@@ -203,6 +228,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the monthly rate
    * @param int $monthlyRate
    * @return FinanceProduct
    */
@@ -214,6 +240,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the months
    * @param int $months
    * @return FinanceProduct
    */
@@ -225,6 +252,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the name
    * @param string $name
    * @return FinanceProduct
    */
@@ -236,6 +264,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the option period
    * @param int $optionPeriod
    * @return FinanceProduct
    */
@@ -247,6 +276,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the GUID
    * @param string $productGuid
    * @return FinanceProduct
    */
@@ -258,6 +288,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the ID
    * @param int $productId
    * @return FinanceProduct
    */
@@ -269,6 +300,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set teh service fee
    * @param int $serviceFee
    * @return FinanceProduct
    */
@@ -280,6 +312,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Set the tag
    * @param string $tag
    * @return FinanceProduct
    */
@@ -291,6 +324,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the APR
    * @return float
    */
   public function getApr(): float
@@ -299,6 +333,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the calculation factor
    * @return float
    */
   public function getCalculationFactor(): float
@@ -307,6 +342,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the deferred period
    * @return int
    */
   public function getDeferredPeriod(): int
@@ -315,6 +351,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the description
    * @return string
    */
   public function getDescription(): string
@@ -323,6 +360,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the document fee
    * @return float
    */
   public function getDocumentFee(): float
@@ -331,6 +369,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the document fee collection month
    * @return int
    */
   public function getDocumentFeeCollectionMonth(): int
@@ -339,6 +378,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the maximum document fee
    * @return int
    */
   public function getDocumentFeeMaximum(): int
@@ -347,6 +387,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the minimum document fee
    * @return int
    */
   public function getDocumentFeeMinimum(): int
@@ -355,6 +396,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the maximum loan amount
    * @return float
    */
   public function getMaxLoan(): float
@@ -363,6 +405,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the minimum loan amount
    * @return float
    */
   public function getMinLoan(): float
@@ -371,6 +414,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the monthly rate
    * @return float
    */
   public function getMonthlyRate(): float
@@ -379,6 +423,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the months
    * @return int
    */
   public function getMonths(): int
@@ -387,6 +432,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the name
    * @return string
    */
   public function getName(): string
@@ -395,6 +441,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the option period
    * @return int
    */
   public function getOptionPeriod(): int
@@ -403,6 +450,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the GUID
    * @return string
    */
   public function getProductGuid(): string
@@ -411,6 +459,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the ID
    * @return int
    */
   public function getProductId(): int
@@ -419,6 +468,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the service fee
    * @return int
    */
   public function getServiceFee(): int
@@ -427,6 +477,7 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
+   * Get the tag
    * @return string
    */
   public function getTag(): string
@@ -435,7 +486,12 @@ class FinanceProduct implements JsonSerializable
   }
 
   /**
-   * @return mixed|void
+   * Specify data which should be serialized to JSON
+   *
+   * @link  http://php.net/manual/en/jsonserializable.jsonserialize.php
+   * @return mixed data which can be serialized by <b>json_encode</b>,
+   * which is a value of any type other than a resource.
+   * @since 5.4.0
    */
   public function jsonSerialize()
   {

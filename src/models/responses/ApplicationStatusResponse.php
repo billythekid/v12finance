@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: billyfagan
- * Date: 28/08/2018
- * Time: 13:29
+ * Objects of this class represent a application status response from the V12 server.
  */
 
 namespace billythekid\v12finance\models\responses;
@@ -15,19 +12,69 @@ use billythekid\v12finance\models\OrderLine;
 use JsonSerializable;
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * Class ApplicationStatusResponse
+ *
+ * @package billythekid\v12finance\models\responses
+ */
 class ApplicationStatusResponse implements JsonSerializable
 {
 
+  /**
+   * Application form URL
+   *
+   * @var null
+   */
   private $applicationFormUrl = null;
+  /**
+   * Application GUID
+   *
+   * @var string
+   */
   private $applicationGuid = '';
+  /**
+   * Application ID
+   *
+   * @var int
+   */
   private $applicationId = -1;
+  /**
+   * Authorisation code
+   *
+   * @var null
+   */
   private $authorisationCode = null;
 
+  /**
+   * Sales reference
+   *
+   * @var null
+   */
   private $salesReference = null;
-  private $status = -1;
+  /**
+   * Status
+   *
+   * @var mixed
+   */
+  private $status = null;
 
+  /**
+   * Customer details
+   *
+   * @var Customer|null
+   */
   private $customer = null;
+  /**
+   * Errors
+   *
+   * @var array
+   */
   private $errors = [];
+  /**
+   * Order line items
+   *
+   * @var null
+   */
   private $orderLines = null;
 
 
@@ -92,14 +139,23 @@ class ApplicationStatusResponse implements JsonSerializable
   }
 
   /**
+   * Check if there were errors
+   *
    * @return bool
    */
   public function hasErrors()
   {
-    return count($this->errors) > 0;
+    if (is_array($this->errors))
+    {
+      return count($this->errors) > 0;
+    }
+
+    return false;
   }
 
   /**
+   * Gets the errors
+   *
    * @return array
    */
   public function getErrors()
@@ -108,14 +164,18 @@ class ApplicationStatusResponse implements JsonSerializable
   }
 
   /**
+   * Gets the application form URL
+   *
    * @return string|null
    */
-  public function getApplicationFormUrl(): ?string
+  public function getApplicationFormUrl()
   {
     return $this->applicationFormUrl;
   }
 
   /**
+   * Gets the application GUID
+   *
    * @return string
    */
   public function getApplicationGuid(): string
@@ -124,6 +184,8 @@ class ApplicationStatusResponse implements JsonSerializable
   }
 
   /**
+   * Gets the application ID
+   *
    * @return int
    */
   public function getApplicationId(): int
@@ -132,41 +194,51 @@ class ApplicationStatusResponse implements JsonSerializable
   }
 
   /**
+   * Gets the authorisation code
+   *
    * @return string|null
    */
-  public function getAuthorisationCode(): ?string
+  public function getAuthorisationCode()
   {
     return $this->authorisationCode;
   }
 
   /**
+   * Gets the sales reference
+   *
    * @return string|null
    */
-  public function getSalesReference(): ?string
+  public function getSalesReference()
   {
     return $this->salesReference;
   }
 
   /**
-   * @return int
+   * Gets the status
+   *
+   * @return mixed
    */
-  public function getStatus(): int
+  public function getStatus()
   {
     return $this->status;
   }
 
   /**
+   * Gets the customer
+   *
    * @return Customer|null
    */
-  public function getCustomer(): ?Customer
+  public function getCustomer()
   {
     return $this->customer;
   }
 
   /**
+   * Gets teh line items
+   *
    * @return array|null
    */
-  public function getOrderLines(): ?array
+  public function getOrderLines()
   {
     return $this->orderLines;
   }

@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: billyfagan
- * Date: 28/08/2018
- * Time: 11:24
+ * Objects of this class represent a line item
  */
 
 namespace billythekid\v12finance\models;
@@ -11,14 +8,41 @@ namespace billythekid\v12finance\models;
 
 use JsonSerializable;
 
+/**
+ * Class OrderLine
+ *
+ * @package billythekid\v12finance\models
+ */
 class OrderLine implements JsonSerializable
 {
+  /**
+   * Item
+   *
+   * @var string
+   */
   private $item = '';
+  /**
+   * Price
+   *
+   * @var float
+   */
   private $price = 0.00;
+  /**
+   * Quantity
+   *
+   * @var int
+   */
   private $qty = 0;
+  /**
+   * SKU
+   *
+   * @var string
+   */
   private $sku = '';
 
   /**
+   * Sets the item
+   *
    * @param string $item
    * @return OrderLine
    */
@@ -30,6 +54,8 @@ class OrderLine implements JsonSerializable
   }
 
   /**
+   * Sets the price
+   *
    * @param float $price
    * @return OrderLine
    */
@@ -41,6 +67,8 @@ class OrderLine implements JsonSerializable
   }
 
   /**
+   * Sets the quantity
+   *
    * @param int $qty
    * @return OrderLine
    */
@@ -52,6 +80,8 @@ class OrderLine implements JsonSerializable
   }
 
   /**
+   * Sets the SKu
+   *
    * @param string $sku
    * @return OrderLine
    */
@@ -63,6 +93,8 @@ class OrderLine implements JsonSerializable
   }
 
   /**
+   * Gets the item
+   *
    * @return string
    */
   public function getItem(): string
@@ -71,6 +103,8 @@ class OrderLine implements JsonSerializable
   }
 
   /**
+   * Gets the price
+   *
    * @return float
    */
   public function getPrice(): float
@@ -79,6 +113,8 @@ class OrderLine implements JsonSerializable
   }
 
   /**
+   * Gets the quantity
+   *
    * @return int
    */
   public function getQty(): int
@@ -87,6 +123,8 @@ class OrderLine implements JsonSerializable
   }
 
   /**
+   * Gets the SKU
+   *
    * @return string
    */
   public function getSku(): string
@@ -107,8 +145,8 @@ class OrderLine implements JsonSerializable
   {
     return [
         'Item'  => $this->getItem(),
-        'Price' => (string) $this->getPrice(),
-        'Qty'   => (string) $this->getQty(),
+        'Price' => (string)$this->getPrice(),
+        'Qty'   => (string)$this->getQty(),
         'SKU'   => $this->getSku(),
     ];
   }
