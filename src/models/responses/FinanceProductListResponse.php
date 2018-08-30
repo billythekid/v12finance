@@ -85,7 +85,7 @@ class FinanceProductListResponse implements JsonSerializable
   /**
    * Gets the financial products available
    *
-   * @return array
+   * @return FinanceProduct[]
    */
   public function getFinanceProducts(): array
   {

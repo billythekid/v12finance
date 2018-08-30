@@ -49,7 +49,6 @@ class V12FinanceClient
    * @param ApplicationRequest $applicationRequest
    * @return ApplicationStatusResponse
    * @throws models\exceptions\InvalidTelephoneException
-   * @throws Exception
    */
   public function submitApplication(ApplicationRequest $applicationRequest)
   {
@@ -61,11 +60,23 @@ class V12FinanceClient
    *
    * @param FinanceProductListRequest $financeProductListRequest
    * @return models\responses\FinanceProductListResponse
-   * @throws Exception
    */
   public function getRetailerFinanceProducts(FinanceProductListRequest $financeProductListRequest)
   {
     return new FinanceProductListResponse($this->queryApi('GetRetailerFinanceProducts', $financeProductListRequest));
+  }
+
+
+  /**
+   * Gets the headers of the response
+   * @param $endpoint
+   * @param $payload
+   * @return \string[][]
+   */
+  public function headers($endpoint, $payload)
+  {
+    return $this->queryApi($endpoint, $payload)
+        ->getHeaders();
   }
 
   /**
@@ -74,27 +85,18 @@ class V12FinanceClient
    * @param string $endpoint
    * @param        $data - serializable by json_encode()
    * @return \Psr\Http\Message\ResponseInterface
-   * @throws Exception
    */
   private function queryApi(string $endpoint, $data)
   {
-    try
-    {
-      return $this->client->request(
-          'POST',
-          $endpoint,
-          [
-              'headers' => [
-                  'Content-Type' => 'application/json',
-              ],
-              'body'    => json_encode($data),
-          ]
-      );
-    } catch (GuzzleException $e)
-    {
-      throw new Exception("There was an issue connecting to V12", $e->getCode());
-    }
-
+    return $this->client->post(
+        $endpoint,
+        [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'body'    => json_encode($data),
+        ]
+    );
   }
 
 }

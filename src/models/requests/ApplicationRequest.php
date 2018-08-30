@@ -110,9 +110,9 @@ class ApplicationRequest implements JsonSerializable
   public function jsonSerialize()
   {
     return [
-        'Retailer'        => $this->getRetailer(),
-        'Order'           => $this->getOrder(),
         'Customer'        => $this->getCustomer(),
+        'Order'           => $this->getOrder(),
+        'Retailer'        => $this->getRetailer(),
         'WaitForDecision' => $this->isWaitForDecision() ? "true" : "false",
     ];
   }

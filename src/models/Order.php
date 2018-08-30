@@ -304,7 +304,7 @@ class Order implements JsonSerializable
         'SalesReference'                => $this->getSalesReference(),
         'vLink'                         => $this->isVLink() ? "true" : "false",
         'IpAddress'                     => $this->getIpAddress(),
-        'Lines'                         => $this->getLines(),
+        'OrderLines'                    => $this->getLines(),
     ];
   }
 }
