@@ -15,7 +15,8 @@
     "php": "^7.1"
   },
   "require-dev": {
-    "phpdocumentor/phpdocumentor": "2.*"
+    "phpdocumentor/phpdocumentor": "2.*",
+    "fzaninotto/faker": "^1.8"
   },
   "autoload": {
     "psr-4": {
