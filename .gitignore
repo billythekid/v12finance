@@ -1,5 +1,5 @@
 .idea/
 vendor/
 public/index.php
-public/calculator.php
+public/calculator.html
 public/docs

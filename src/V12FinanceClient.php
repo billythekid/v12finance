@@ -6,6 +6,7 @@
 namespace billythekid\v12finance;
 
 use billythekid\v12finance\models\requests\ApplicationRequest;
+use billythekid\v12finance\models\requests\ApplicationStatusRequest;
 use billythekid\v12finance\models\requests\FinanceProductListRequest;
 use billythekid\v12finance\models\responses\ApplicationStatusResponse;
 use billythekid\v12finance\models\responses\FinanceProductListResponse;
@@ -56,6 +57,18 @@ class V12FinanceClient
   }
 
   /**
+   * Submit an application status request to V12
+   *
+   * @param ApplicationStatusRequest $request
+   * @return ApplicationStatusResponse
+   * @throws models\exceptions\InvalidTelephoneException
+   */
+  public function checkApplicationStatus(ApplicationStatusRequest $request)
+  {
+    return new ApplicationStatusResponse($this->queryApi('CheckApplicationStatus', $request));
+  }
+
+  /**
    * Get the finance products available for a retailer
    *
    * @param FinanceProductListRequest $financeProductListRequest
@@ -69,6 +82,7 @@ class V12FinanceClient
 
   /**
    * Gets the headers of the response
+   *
    * @param $endpoint
    * @param $payload
    * @return \string[][]

@@ -1,6 +1,7 @@
 <?php
 /**
- * Objects of this class represent an application status request
+ * Objects of this class represent an application status request.
+ *
  */
 
 namespace billythekid\v12finance\models\requests;
