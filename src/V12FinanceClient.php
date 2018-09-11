@@ -8,8 +8,10 @@ namespace billythekid\v12finance;
 use billythekid\v12finance\models\requests\ApplicationRequest;
 use billythekid\v12finance\models\requests\ApplicationStatusRequest;
 use billythekid\v12finance\models\requests\ApplicationUpdateRequest;
+use billythekid\v12finance\models\requests\DownloadDocumentRequest;
 use billythekid\v12finance\models\requests\FinanceProductListRequest;
 use billythekid\v12finance\models\responses\ApplicationStatusResponse;
+use billythekid\v12finance\models\responses\DownloadDocumentResult;
 use billythekid\v12finance\models\responses\FinanceProductListResponse;
 use GuzzleHttp\Client;
 
@@ -89,6 +91,18 @@ class V12FinanceClient
   {
     return new FinanceProductListResponse($this->queryApi('GetRetailerFinanceProducts', $financeProductListRequest));
   }
+
+  /**
+   * Get a download document
+   *
+   * @param DownloadDocumentRequest $downloadDocumentRequest
+   * @return DownloadDocumentResult
+   */
+  public function downloadDocument(DownloadDocumentRequest $downloadDocumentRequest)
+  {
+    return new DownloadDocumentResult($this->queryApi('DownloadDocument', $downloadDocumentRequest));
+  }
+
 
   /**
    * Gets the headers of the response

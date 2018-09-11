@@ -35,9 +35,9 @@ class ApplicationStatusResponse implements JsonSerializable
   /**
    * Application ID
    *
-   * @var int
+   * @var string
    */
-  private $applicationId = -1;
+  private $applicationId = null;
   /**
    * Authorisation code
    *
@@ -73,7 +73,7 @@ class ApplicationStatusResponse implements JsonSerializable
   /**
    * Order line items
    *
-   * @var null
+   * @var OrderLine[]
    */
   private $orderLines = null;
 
@@ -90,7 +90,7 @@ class ApplicationStatusResponse implements JsonSerializable
 
     $this->applicationFormUrl = $object->ApplicationFormUrl ?? null;
     $this->applicationGuid    = $object->ApplicationGuid ?? '';
-    $this->applicationId      = $object->ApplicationId ?? -1;
+    $this->applicationId      = $object->ApplicationId ?? null;
     $this->authorisationCode  = $object->AuthorisationCode ?? null;
     $this->salesReference     = $object->SalesReference ?? null;
     $this->status             = $object->Status;
@@ -186,9 +186,9 @@ class ApplicationStatusResponse implements JsonSerializable
   /**
    * Gets the application ID
    *
-   * @return int
+   * @return string
    */
-  public function getApplicationId(): int
+  public function getApplicationId(): string
   {
     return $this->applicationId;
   }
@@ -234,7 +234,7 @@ class ApplicationStatusResponse implements JsonSerializable
   }
 
   /**
-   * Gets teh line items
+   * Gets the line items
    *
    * @return array|null
    */

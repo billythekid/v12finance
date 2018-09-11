@@ -79,10 +79,12 @@ class ApplicationUpdateRequest implements JsonSerializable
   private $dateOfBirth = null;
   /**
    * The updates that are allowed
-   *
-   * @var string[]
    */
-  private $updatesAvailable = [
+
+  /**
+   * The only update types we allow
+   */
+  const UPDATES_AVAILABLE = [
       'Cancel',
       'RequestPayment',
       'PartialRefund',
@@ -109,9 +111,9 @@ class ApplicationUpdateRequest implements JsonSerializable
    */
   public function setUpdate(string $update): ApplicationUpdateRequest
   {
-    if (!in_array($update, $this->updatesAvailable))
+    if (!in_array($update, self::UPDATES_AVAILABLE))
     {
-      throw new InvalidUpdateException("Updates must be one of: " . implode(', ', $this->updatesAvailable));
+      throw new InvalidUpdateException("Updates must be one of: " . implode(', ', self::UPDATES_AVAILABLE));
     }
 
     $this->update = $update;

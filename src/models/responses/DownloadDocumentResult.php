@@ -1,0 +1,137 @@
+<?php
+/**
+ * Objects of this class represent a download document result
+ */
+
+namespace billythekid\v12finance\models\responses;
+
+
+use JsonSerializable;
+use Psr\Http\Message\ResponseInterface;
+
+/**
+ * Class DownloadDocumentResult
+ *
+ * @package billythekid\v12finance\models\responses
+ */
+class DownloadDocumentResult implements JsonSerializable
+{
+
+  /**
+   * The application ID
+   *
+   * @var null|string
+   */
+  private $applicationId = null;
+  /**
+   * The document, base64 encoded string
+   *
+   * @var null|string base64
+   */
+  private $document = null;
+  /**
+   * The document type
+   *
+   * @var null|string
+   */
+  private $documentType = null;
+  /**
+   * An array of any errors
+   *
+   * @var ResponseError[]
+   */
+  private $errors = [];
+
+  /**
+   * DownloadDocumentResult constructor.
+   *
+   * @param ResponseInterface $responseObject
+   */
+  public function __construct(ResponseInterface $responseObject)
+  {
+    $object = json_decode($responseObject->getBody());
+
+    $this->applicationId = $object->ApplicationId ?? null;
+    $this->document      = $object->Document ?? null;
+    $this->documentType  = $object->DocumentType ?? null;
+
+    foreach ($object->Errors as $error)
+    {
+      $this->errors[] = new ResponseError($error->Code, $error->Description, $error->Reference);
+    }
+  }
+
+  /**
+   * Check if there were errors
+   *
+   * @return bool
+   */
+  public function hasErrors()
+  {
+    if (is_array($this->errors))
+    {
+      return count($this->errors) > 0;
+    }
+
+    return false;
+  }
+
+  /**
+   * Gets the errors
+   *
+   * @return array
+   */
+  public function getErrors(): array
+  {
+    return $this->errors;
+  }
+
+  /**
+   * Gets the application ID
+   *
+   * @return string
+   */
+  public function getApplicationId()
+  {
+    return $this->applicationId;
+  }
+
+  /**
+   * Gets the document (base64 string)
+   *
+   * @return string base64
+   */
+  public function getDocument()
+  {
+    return $this->document;
+  }
+
+  /**
+   * Gets the type of the document
+   *
+   * @return string
+   */
+  public function getDocumentType()
+  {
+    return $this->documentType;
+  }
+
+
+  /**
+   * Specify data which should be serialized to JSON
+   *
+   * @link  http://php.net/manual/en/jsonserializable.jsonserialize.php
+   * @return mixed data which can be serialized by <b>json_encode</b>,
+   * which is a value of any type other than a resource.
+   * @since 5.4.0
+   */
+  public function jsonSerialize()
+  {
+    return [
+        'ApplicationId' => $this->getApplicationId(),
+        'Document'      => $this->getDocument(),
+        'DocumentType'  => $this->getDocumentType(),
+        'Errors'        => $this->getErrors(),
+    ];
+  }
+}
