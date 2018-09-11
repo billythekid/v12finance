@@ -1,7 +1,6 @@
 <?php
 /**
  * Objects of this class represent an application status request.
- *
  */
 
 namespace billythekid\v12finance\models\requests;
@@ -19,18 +18,29 @@ class ApplicationStatusRequest implements JsonSerializable
 {
 
   /**
-   * @var int|null
+   * The application ID
+   *
+   * @var string|null
    */
   private $applicationId;
+
   /**
+   * Include extra details
+   *
    * @var bool
    */
   private $includedExtraDetails;
+
   /**
+   * Include financials
+   *
    * @var bool
    */
   private $includeFinancials;
+
   /**
+   * The retailer
+   *
    * @var Retailer
    */
   private $retailer;
@@ -52,14 +62,18 @@ class ApplicationStatusRequest implements JsonSerializable
   }
 
   /**
+   * Gets the application ID
+   *
    * @return int|null
    */
-  public function getApplicationId(): ?int
+  public function getApplicationId()
   {
     return $this->applicationId;
   }
 
   /**
+   * Gets if the response should include extra details
+   *
    * @return bool
    */
   public function isIncludedExtraDetails(): bool
@@ -68,6 +82,8 @@ class ApplicationStatusRequest implements JsonSerializable
   }
 
   /**
+   * Gets if the response should include financials
+   *
    * @return bool
    */
   public function isIncludeFinancials(): bool
@@ -76,6 +92,8 @@ class ApplicationStatusRequest implements JsonSerializable
   }
 
   /**
+   * Gets the retailer
+   *
    * @return Retailer
    */
   public function getRetailer(): Retailer

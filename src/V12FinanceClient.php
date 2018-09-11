@@ -7,12 +7,11 @@ namespace billythekid\v12finance;
 
 use billythekid\v12finance\models\requests\ApplicationRequest;
 use billythekid\v12finance\models\requests\ApplicationStatusRequest;
+use billythekid\v12finance\models\requests\ApplicationUpdateRequest;
 use billythekid\v12finance\models\requests\FinanceProductListRequest;
 use billythekid\v12finance\models\responses\ApplicationStatusResponse;
 use billythekid\v12finance\models\responses\FinanceProductListResponse;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
-use \Exception;
 
 /**
  * Class V12FinanceClient
@@ -69,6 +68,18 @@ class V12FinanceClient
   }
 
   /**
+   * Make an update to an application
+   *
+   * @param ApplicationUpdateRequest $request
+   * @return ApplicationStatusResponse
+   * @throws models\exceptions\InvalidTelephoneException
+   */
+  public function updateApplication(ApplicationUpdateRequest $request)
+  {
+    return new ApplicationStatusResponse($this->queryApi('UpdateApplication', $request));
+  }
+
+  /**
    * Get the finance products available for a retailer
    *
    * @param FinanceProductListRequest $financeProductListRequest
@@ -78,7 +89,6 @@ class V12FinanceClient
   {
     return new FinanceProductListResponse($this->queryApi('GetRetailerFinanceProducts', $financeProductListRequest));
   }
-
 
   /**
    * Gets the headers of the response
@@ -94,7 +104,7 @@ class V12FinanceClient
   }
 
   /**
-   * Send data to the API endpoints at V12
+   * Send data to the API endpoints at V12 Finance
    *
    * @param string $endpoint
    * @param        $data - serializable by json_encode()
