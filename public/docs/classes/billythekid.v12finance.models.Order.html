@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/billythekid.html">\billythekid</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-724275504"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-724275504" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-620294349"></a>
+                                <a href="../namespaces/billythekid.html" style="margin-left: 30px; padding-left: 0">billythekid</a>
+            </div>
+            <div id="namespace-620294349" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1116812177"></a>
+                                <a href="../namespaces/billythekid.v12finance.html" style="margin-left: 30px; padding-left: 0">v12finance</a>
+            </div>
+            <div id="namespace-1116812177" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-119111091"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-119111091" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-549794126"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.exceptions.html" style="margin-left: 30px; padding-left: 0">exceptions</a>
+            </div>
+            <div id="namespace-549794126" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.exceptions.InvalidDocumentException.html">InvalidDocumentException</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.exceptions.InvalidTelephoneException.html">InvalidTelephoneException</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.exceptions.InvalidUpdateException.html">InvalidUpdateException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1245468495"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.requests.html" style="margin-left: 30px; padding-left: 0">requests</a>
+            </div>
+            <div id="namespace-1245468495" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.ApplicationRequest.html">ApplicationRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.ApplicationStatusRequest.html">ApplicationStatusRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html">ApplicationUpdateRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.DownloadDocumentRequest.html">DownloadDocumentRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.FinanceProductListRequest.html">FinanceProductListRequest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-432097307"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.responses.html" style="margin-left: 30px; padding-left: 0">responses</a>
+            </div>
+            <div id="namespace-432097307" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.ApplicationStatusResponse.html">ApplicationStatusResponse</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.DownloadDocumentResult.html">DownloadDocumentResult</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.FinanceProductListResponse.html">FinanceProductListResponse</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.ResponseError.html">ResponseError</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.Customer.html">Customer</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.FinanceProduct.html">FinanceProduct</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.Order.html">Order</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.OrderLine.html">OrderLine</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.Retailer.html">Retailer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.V12FinanceClient.html">V12FinanceClient</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/billythekid.v12finance.models.html">\billythekid\v12finance\models</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\billythekid\v12finance\models</small>Order</h1>
+                    <p><em>Class Order</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_getCashPrice" class="">getCashPrice()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_getDeposit" class="">getDeposit()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_getDuplicateSalesReferenceMethod" class="">getDuplicateSalesReferenceMethod()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_getProductGuid" class="">getProductGuid()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_getProductId" class="">getProductId()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_getSalesReference" class="">getSalesReference()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_isVLink" class="">isVLink()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_getIpAddress" class="">getIpAddress()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_getLines" class="">getLines()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_setCashPrice" class="">setCashPrice()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_setDeposit" class="">setDeposit()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_setDuplicateSalesReferenceMethod" class="">setDuplicateSalesReferenceMethod()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_setProductGuid" class="">setProductGuid()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_setProductId" class="">setProductId()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_setSalesReference" class="">setSalesReference()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_setVLink" class="">setVLink()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_setIpAddress" class="">setIpAddress()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_setLines" class="">setLines()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#method_jsonSerialize" class="">jsonSerialize()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#property_cashPrice" class="">$cashPrice</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#property_deposit" class="">$deposit</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#property_duplicateSalesReferenceMethod" class="">$duplicateSalesReferenceMethod</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#property_productGuid" class="">$productGuid</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#property_productId" class="">$productId</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#property_salesReference" class="">$salesReference</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#property_vLink" class="">$vLink</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#property_ipAddress" class="">$ipAddress</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.Order.html#property_lines" class="">$lines</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/models.Order.html"><div class="path-wrapper">models/Order.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">v12finance\models</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\billythekid\v12finance\models\Order</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href=""><div class="namespace-wrapper"></div></a></dd>
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_cashPrice" name="property_cashPrice" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$cashPrice</h3>
+                <pre class="signature">$cashPrice : float</pre>
+                <p><em>Cash price</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_deposit" name="property_deposit" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$deposit</h3>
+                <pre class="signature">$deposit : float</pre>
+                <p><em>Deposit amount</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_duplicateSalesReferenceMethod" name="property_duplicateSalesReferenceMethod" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$duplicateSalesReferenceMethod</h3>
+                <pre class="signature">$duplicateSalesReferenceMethod : string</pre>
+                <p><em>Duplicate sales reference method</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_productGuid" name="property_productGuid" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$productGuid</h3>
+                <pre class="signature">$productGuid : string</pre>
+                <p><em>Product GUID</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_productId" name="property_productId" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$productId</h3>
+                <pre class="signature">$productId : string</pre>
+                <p><em>Product ID</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_salesReference" name="property_salesReference" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$salesReference</h3>
+                <pre class="signature">$salesReference : string</pre>
+                <p><em>Sales reference</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_vLink" name="property_vLink" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$vLink</h3>
+                <pre class="signature">$vLink : boolean</pre>
+                <p><em>V Link</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_ipAddress" name="property_ipAddress" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$ipAddress</h3>
+                <pre class="signature">$ipAddress : string</pre>
+                <p><em>IP address</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_lines" name="property_lines" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$lines</h3>
+                <pre class="signature">$lines : </pre>
+                <p><em>Any line items</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                &mdash; OrderLine[]                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCashPrice" name="method_getCashPrice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCashPrice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCashPrice() : float</pre>
+                <p><em>Gets the cash price</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDeposit" name="method_getDeposit" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDeposit()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDeposit() : float</pre>
+                <p><em>Gets the deposit</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDuplicateSalesReferenceMethod" name="method_getDuplicateSalesReferenceMethod" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDuplicateSalesReferenceMethod()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDuplicateSalesReferenceMethod() : string</pre>
+                <p><em>Gets the duplicate sales reference method</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getProductGuid" name="method_getProductGuid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getProductGuid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getProductGuid() : string</pre>
+                <p><em>Gets the product GUID</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getProductId" name="method_getProductId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getProductId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getProductId() : string</pre>
+                <p><em>Gets the product ID</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSalesReference" name="method_getSalesReference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSalesReference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSalesReference() : string</pre>
+                <p><em>Gets the sales reference</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isVLink" name="method_isVLink" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isVLink()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isVLink() : boolean</pre>
+                <p><em>Determines if this has a V link</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getIpAddress" name="method_getIpAddress" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getIpAddress()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getIpAddress() : string</pre>
+                <p><em>Gets the IP address</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getLines" name="method_getLines" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getLines()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getLines() : array&lt;mixed,\billythekid\v12finance\models\OrderLine&gt;</pre>
+                <p><em>Gets the line items</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,<a href="../classes/billythekid.v12finance.models.OrderLine.html">\billythekid\v12finance\models\OrderLine</a>&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCashPrice" name="method_setCashPrice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setCashPrice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCashPrice(float  <span class="argument">$cashPrice</span>) : \billythekid\v12finance\models\Order</pre>
+                <p><em>Sets the cash price</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$cashPrice </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.Order.html">\billythekid\v12finance\models\Order</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDeposit" name="method_setDeposit" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDeposit()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDeposit(float  <span class="argument">$deposit</span>) : \billythekid\v12finance\models\Order</pre>
+                <p><em>Sets the deposit</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$deposit </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.Order.html">\billythekid\v12finance\models\Order</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDuplicateSalesReferenceMethod" name="method_setDuplicateSalesReferenceMethod" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDuplicateSalesReferenceMethod()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDuplicateSalesReferenceMethod(string  <span class="argument">$duplicateSalesReferenceMethod</span>) : \billythekid\v12finance\models\Order</pre>
+                <p><em>Sets the duplicate sales reference method</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$duplicateSalesReferenceMethod </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.Order.html">\billythekid\v12finance\models\Order</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setProductGuid" name="method_setProductGuid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setProductGuid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setProductGuid(string  <span class="argument">$productGuid</span>) : \billythekid\v12finance\models\Order</pre>
+                <p><em>Sets the product GUID</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$productGuid </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.Order.html">\billythekid\v12finance\models\Order</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setProductId" name="method_setProductId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setProductId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setProductId(string  <span class="argument">$productId</span>) : \billythekid\v12finance\models\Order</pre>
+                <p><em>Sets the product ID</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$productId </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.Order.html">\billythekid\v12finance\models\Order</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setSalesReference" name="method_setSalesReference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setSalesReference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setSalesReference(string  <span class="argument">$salesReference</span>) : \billythekid\v12finance\models\Order</pre>
+                <p><em>Sets the sales reference</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$salesReference </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.Order.html">\billythekid\v12finance\models\Order</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setVLink" name="method_setVLink" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setVLink()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setVLink(boolean  <span class="argument">$vLink</span>) : \billythekid\v12finance\models\Order</pre>
+                <p><em>Sets the V link</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$vLink </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.Order.html">\billythekid\v12finance\models\Order</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setIpAddress" name="method_setIpAddress" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setIpAddress()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setIpAddress(string  <span class="argument">$ipAddress</span>) : \billythekid\v12finance\models\Order</pre>
+                <p><em>Sets the IP address</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ipAddress </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.Order.html">\billythekid\v12finance\models\Order</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setLines" name="method_setLines" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setLines()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setLines(array&lt;mixed,\billythekid\v12finance\models\OrderLine&gt;  <span class="argument">$lines</span>) : \billythekid\v12finance\models\Order</pre>
+                <p><em>Sets the order lines</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,<a href="../classes/billythekid.v12finance.models.OrderLine.html">\billythekid\v12finance\models\OrderLine</a>&gt;</td>
+                                <td>$lines </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.Order.html">\billythekid\v12finance\models\Order</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_jsonSerialize" name="method_jsonSerialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">jsonSerialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">jsonSerialize() : mixed</pre>
+                <p><em>Specify data which should be serialized to JSON</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>data which can be serialized by <b>json_encode</b>,
+which is a value of any type other than a resource.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/jsonserializable.jsonserialize.php"><span class="namespace-wrapper">http://php.net/manual/en/jsonserializable.jsonserialize.php</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            5.4.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Order.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/models/Order.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/billythekid.html">\billythekid</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on September 11th, 2018 at 12:30.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

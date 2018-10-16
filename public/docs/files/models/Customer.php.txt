@@ -1,0 +1,210 @@
+<?php
+/**
+ * Objects of this class represent a customer
+ */
+
+namespace billythekid\v12finance\models;
+
+
+use billythekid\v12finance\models\exceptions\InvalidTelephoneException;
+use JsonSerializable;
+
+/**
+ * Class Customer
+ *
+ * @package billythekid\v12finance\models
+ */
+class Customer implements JsonSerializable
+{
+  /**
+   * Email
+   *
+   * @var string
+   */
+  private $emailAddress = '';
+  /**
+   * First name
+   *
+   * @var string
+   */
+  private $firstName = '';
+  /**
+   * Last name
+   *
+   * @var string
+   */
+  private $lastName = '';
+  /**
+   * Home phone
+   *
+   * @var array
+   */
+  private $homeTelephone = ['Code' => '', 'Number' => ''];
+  /**
+   * Mobile phone
+   *
+   * @var array
+   */
+  private $mobileTelephone = ['Code' => '', 'Number' => ''];
+
+  /**
+   * Sets the email
+   *
+   * @param string $emailAddress
+   * @return Customer
+   */
+  public function setEmailAddress(string $emailAddress): Customer
+  {
+    $this->emailAddress = $emailAddress;
+
+    return $this;
+  }
+
+  /**
+   * Sets the first name
+   *
+   * @param string $firstName
+   * @return Customer
+   */
+  public function setFirstName(string $firstName): Customer
+  {
+    $this->firstName = $firstName;
+
+    return $this;
+  }
+
+  /**
+   * Sets the last name
+   *
+   * @param string $lastName
+   * @return Customer
+   */
+  public function setLastName(string $lastName): Customer
+  {
+    $this->lastName = $lastName;
+
+    return $this;
+  }
+
+  /**
+   * Sets the home phone
+   *
+   * @param array $homeTelephone
+   * @return Customer
+   * @throws InvalidTelephoneException
+   */
+  public function setHomeTelephone(array $homeTelephone): Customer
+  {
+    $this->validateTelephoneNumber($homeTelephone);
+
+    $this->homeTelephone['Code']   = (string)$homeTelephone['code'];
+    $this->homeTelephone['Number'] = (string)$homeTelephone['number'];
+
+    return $this;
+  }
+
+  /**
+   * Sets the mobile phone
+   *
+   * @param array $mobileTelephone
+   * @return Customer
+   * @throws InvalidTelephoneException
+   */
+  public function setMobileTelephone(array $mobileTelephone): Customer
+  {
+    $this->validateTelephoneNumber($mobileTelephone);
+
+    $this->mobileTelephone['Code']   = (string)$mobileTelephone['code'];
+    $this->mobileTelephone['Number'] = (string)$mobileTelephone['number'];
+
+    return $this;
+  }
+
+  /**
+   * Gets the email
+   *
+   * @return string
+   */
+  public function getEmailAddress(): string
+  {
+    return $this->emailAddress;
+  }
+
+  /**
+   * Gets the first name
+   *
+   * @return string
+   */
+  public function getFirstName(): string
+  {
+    return $this->firstName;
+  }
+
+  /**
+   * Gets the last name
+   *
+   * @return string
+   */
+  public function getLastName(): string
+  {
+    return $this->lastName;
+  }
+
+  /**
+   * Gets the home phone
+   *
+   * @return array
+   */
+  public function getHomeTelephone(): array
+  {
+    return $this->homeTelephone;
+  }
+
+  /**
+   * Gets the mobile phone
+   *
+   * @return array
+   */
+  public function getMobileTelephone(): array
+  {
+    return $this->mobileTelephone;
+  }
+
+
+  /**
+   * Validates a telephone number has both a 'code' and 'number' parameter
+   *
+   * @param $telephoneNumber
+   * @throws InvalidTelephoneException
+   */
+  private function validateTelephoneNumber($telephoneNumber)
+  {
+    if (empty($telephoneNumber['code']))
+    {
+      throw new InvalidTelephoneException("A telephone number requires an area code");
+    }
+    if (empty($telephoneNumber['number']))
+    {
+      throw new InvalidTelephoneException("A telephone number requires a number");
+    }
+  }
+
+  /**
+   * Specify data which should be serialized to JSON
+   *
+   * @link  http://php.net/manual/en/jsonserializable.jsonserialize.php
+   * @return mixed data which can be serialized by <b>json_encode</b>,
+   * which is a value of any type other than a resource.
+   * @since 5.4.0
+   */
+  public function jsonSerialize()
+  {
+    return [
+        'EmailAddress'    => $this->getEmailAddress(),
+        'FirstName'       => $this->getFirstName(),
+        'LastName'        => $this->getLastName(),
+        'HomeTelephone'   => $this->getHomeTelephone(),
+        'MobileTelephone' => $this->getMobileTelephone(),
+    ];
+  }
+}

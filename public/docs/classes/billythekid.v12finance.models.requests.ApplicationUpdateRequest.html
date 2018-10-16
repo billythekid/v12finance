@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/billythekid.html">\billythekid</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-653831655"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-653831655" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-380204389"></a>
+                                <a href="../namespaces/billythekid.html" style="margin-left: 30px; padding-left: 0">billythekid</a>
+            </div>
+            <div id="namespace-380204389" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-910656980"></a>
+                                <a href="../namespaces/billythekid.v12finance.html" style="margin-left: 30px; padding-left: 0">v12finance</a>
+            </div>
+            <div id="namespace-910656980" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1103385605"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-1103385605" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1167143308"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.exceptions.html" style="margin-left: 30px; padding-left: 0">exceptions</a>
+            </div>
+            <div id="namespace-1167143308" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.exceptions.InvalidDocumentException.html">InvalidDocumentException</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.exceptions.InvalidTelephoneException.html">InvalidTelephoneException</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.exceptions.InvalidUpdateException.html">InvalidUpdateException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-783224605"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.requests.html" style="margin-left: 30px; padding-left: 0">requests</a>
+            </div>
+            <div id="namespace-783224605" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.ApplicationRequest.html">ApplicationRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.ApplicationStatusRequest.html">ApplicationStatusRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html">ApplicationUpdateRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.DownloadDocumentRequest.html">DownloadDocumentRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.FinanceProductListRequest.html">FinanceProductListRequest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-746294629"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.responses.html" style="margin-left: 30px; padding-left: 0">responses</a>
+            </div>
+            <div id="namespace-746294629" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.ApplicationStatusResponse.html">ApplicationStatusResponse</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.DownloadDocumentResult.html">DownloadDocumentResult</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.FinanceProductListResponse.html">FinanceProductListResponse</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.ResponseError.html">ResponseError</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.Customer.html">Customer</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.FinanceProduct.html">FinanceProduct</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.Order.html">Order</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.OrderLine.html">OrderLine</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.Retailer.html">Retailer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.V12FinanceClient.html">V12FinanceClient</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/billythekid.v12finance.models.requests.html">\billythekid\v12finance\models\requests</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\billythekid\v12finance\models\requests</small>ApplicationUpdateRequest</h1>
+                    <p><em>Class ApplicationUpdateRequest</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_setUpdate" class="">setUpdate()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_setLoanAmount" class="">setLoanAmount()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_setRefundAmount" class="">setRefundAmount()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_setSalesReference" class="">setSalesReference()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_setSecondSalesReference" class="">setSecondSalesReference()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_setNewSalesReference" class="">setNewSalesReference()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_setNewSecondSalesReference" class="">setNewSecondSalesReference()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_setDateOfBirth" class="">setDateOfBirth()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_getApplicationId" class="">getApplicationId()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_getRetailer" class="">getRetailer()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_getUpdate" class="">getUpdate()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_getLoanAmount" class="">getLoanAmount()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_getRefundAmount" class="">getRefundAmount()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_getSalesReference" class="">getSalesReference()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_getSecondSalesReference" class="">getSecondSalesReference()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_getNewSalesReference" class="">getNewSalesReference()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_getNewSecondSalesReference" class="">getNewSecondSalesReference()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_getDateOfBirth" class="">getDateOfBirth()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#method_jsonSerialize" class="">jsonSerialize()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#constant_UPDATES_AVAILABLE" class="">UPDATES_AVAILABLE</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#property_applicationId" class="">$applicationId</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#property_retailer" class="">$retailer</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#property_update" class="">$update</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#property_loanAmount" class="">$loanAmount</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#property_refundAmount" class="">$refundAmount</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#property_salesReference" class="">$salesReference</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#property_secondSalesReference" class="">$secondSalesReference</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#property_newSalesReference" class="">$newSalesReference</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#property_newSecondSalesReference" class="">$newSecondSalesReference</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html#property_dateOfBirth" class="">$dateOfBirth</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/models.requests.ApplicationUpdateRequest.html"><div class="path-wrapper">models/requests/ApplicationUpdateRequest.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">models\requests</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\billythekid\v12finance\models\requests\ApplicationUpdateRequest</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href=""><div class="namespace-wrapper"></div></a></dd>
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_UPDATES_AVAILABLE" name="constant_UPDATES_AVAILABLE" class="anchor"></a>
+            <article id="constant_UPDATES_AVAILABLE" class="constant">
+                <h3 class="">UPDATES_AVAILABLE</h3>
+                <pre class="signature">UPDATES_AVAILABLE</pre>
+                <p><em>The only update types we allow</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_applicationId" name="property_applicationId" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$applicationId</h3>
+                <pre class="signature">$applicationId : string|null</pre>
+                <p><em>The application ID</em></p>
+                
+
+                                <h4>Type</h4>
+                string|null
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_retailer" name="property_retailer" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$retailer</h3>
+                <pre class="signature">$retailer : \billythekid\v12finance\models\Retailer</pre>
+                <p><em>The retailer</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/billythekid.v12finance.models.Retailer.html">\billythekid\v12finance\models\Retailer</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_update" name="property_update" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$update</h3>
+                <pre class="signature">$update : string|null</pre>
+                <p><em>The update to be performed</em></p>
+                
+
+                                <h4>Type</h4>
+                string|null
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_loanAmount" name="property_loanAmount" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$loanAmount</h3>
+                <pre class="signature">$loanAmount : float</pre>
+                <p><em>The loan amount</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_refundAmount" name="property_refundAmount" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$refundAmount</h3>
+                <pre class="signature">$refundAmount : float</pre>
+                <p><em>The refund amount</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_salesReference" name="property_salesReference" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$salesReference</h3>
+                <pre class="signature">$salesReference : string|null</pre>
+                <p><em>The sales reference</em></p>
+                
+
+                                <h4>Type</h4>
+                string|null
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_secondSalesReference" name="property_secondSalesReference" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$secondSalesReference</h3>
+                <pre class="signature">$secondSalesReference : string|null</pre>
+                <p><em>The second sales reference</em></p>
+                
+
+                                <h4>Type</h4>
+                string|null
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_newSalesReference" name="property_newSalesReference" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$newSalesReference</h3>
+                <pre class="signature">$newSalesReference : string|null</pre>
+                <p><em>The new sales reference</em></p>
+                
+
+                                <h4>Type</h4>
+                string|null
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_newSecondSalesReference" name="property_newSecondSalesReference" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$newSecondSalesReference</h3>
+                <pre class="signature">$newSecondSalesReference : string|null</pre>
+                <p><em>The new second sales reference</em></p>
+                
+
+                                <h4>Type</h4>
+                string|null
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_dateOfBirth" name="property_dateOfBirth" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$dateOfBirth</h3>
+                <pre class="signature">$dateOfBirth : string|null</pre>
+                <p><em>The date of birth</em></p>
+                
+
+                                <h4>Type</h4>
+                string|null
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\billythekid\v12finance\models\Retailer  <span class="argument">$retailer</span>) </pre>
+                <p><em>ApplicationUpdateRequest constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/billythekid.v12finance.models.Retailer.html">\billythekid\v12finance\models\Retailer</a></td>
+                                <td>$retailer </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setUpdate" name="method_setUpdate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setUpdate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setUpdate(string  <span class="argument">$update</span>) : \billythekid\v12finance\models\requests\ApplicationUpdateRequest</pre>
+                <p><em>Sets the update</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$update </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\billythekid\v12finance\models\exceptions\InvalidUpdateException</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html">\billythekid\v12finance\models\requests\ApplicationUpdateRequest</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setLoanAmount" name="method_setLoanAmount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setLoanAmount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setLoanAmount(float  <span class="argument">$loanAmount</span>) : \billythekid\v12finance\models\requests\ApplicationUpdateRequest</pre>
+                <p><em>Set the loan amount</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$loanAmount </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html">\billythekid\v12finance\models\requests\ApplicationUpdateRequest</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRefundAmount" name="method_setRefundAmount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRefundAmount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRefundAmount(float  <span class="argument">$refundAmount</span>) : \billythekid\v12finance\models\requests\ApplicationUpdateRequest</pre>
+                <p><em>Set the refund amount</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$refundAmount </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html">\billythekid\v12finance\models\requests\ApplicationUpdateRequest</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setSalesReference" name="method_setSalesReference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setSalesReference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setSalesReference(string  <span class="argument">$salesReference</span>) : \billythekid\v12finance\models\requests\ApplicationUpdateRequest</pre>
+                <p><em>Set the current sales reference</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$salesReference </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html">\billythekid\v12finance\models\requests\ApplicationUpdateRequest</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setSecondSalesReference" name="method_setSecondSalesReference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setSecondSalesReference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setSecondSalesReference(string  <span class="argument">$secondSalesReference</span>) : \billythekid\v12finance\models\requests\ApplicationUpdateRequest</pre>
+                <p><em>Set the current second sales reference</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$secondSalesReference </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html">\billythekid\v12finance\models\requests\ApplicationUpdateRequest</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setNewSalesReference" name="method_setNewSalesReference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setNewSalesReference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setNewSalesReference(string  <span class="argument">$newSalesReference</span>) : \billythekid\v12finance\models\requests\ApplicationUpdateRequest</pre>
+                <p><em>Set the new sales reference</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$newSalesReference </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html">\billythekid\v12finance\models\requests\ApplicationUpdateRequest</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setNewSecondSalesReference" name="method_setNewSecondSalesReference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setNewSecondSalesReference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setNewSecondSalesReference(string  <span class="argument">$newSecondSalesReference</span>) : \billythekid\v12finance\models\requests\ApplicationUpdateRequest</pre>
+                <p><em>Set the new second sales reference</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$newSecondSalesReference </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html">\billythekid\v12finance\models\requests\ApplicationUpdateRequest</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDateOfBirth" name="method_setDateOfBirth" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDateOfBirth()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDateOfBirth(string  <span class="argument">$dateOfBirth</span>) : \billythekid\v12finance\models\requests\ApplicationUpdateRequest</pre>
+                <p><em>Set the date of birth</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$dateOfBirth </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html">\billythekid\v12finance\models\requests\ApplicationUpdateRequest</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getApplicationId" name="method_getApplicationId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getApplicationId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getApplicationId() : string|null</pre>
+                <p><em>Get the application ID</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string|null
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRetailer" name="method_getRetailer" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRetailer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRetailer() : \billythekid\v12finance\models\Retailer</pre>
+                <p><em>Get the retailer</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.Retailer.html">\billythekid\v12finance\models\Retailer</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUpdate" name="method_getUpdate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUpdate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUpdate() : null|string</pre>
+                <p><em>Get the update</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getLoanAmount" name="method_getLoanAmount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getLoanAmount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getLoanAmount() : float</pre>
+                <p><em>Get the loan amount</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRefundAmount" name="method_getRefundAmount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRefundAmount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRefundAmount() : float</pre>
+                <p><em>Get the refund amount</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSalesReference" name="method_getSalesReference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSalesReference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSalesReference() : null|string</pre>
+                <p><em>Get the current sales reference</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSecondSalesReference" name="method_getSecondSalesReference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSecondSalesReference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSecondSalesReference() : null|string</pre>
+                <p><em>Get the current second sales reference</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getNewSalesReference" name="method_getNewSalesReference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getNewSalesReference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getNewSalesReference() : null|string</pre>
+                <p><em>Get the new sales reference</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getNewSecondSalesReference" name="method_getNewSecondSalesReference" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getNewSecondSalesReference()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getNewSecondSalesReference() : null|string</pre>
+                <p><em>Get the new second sales reference</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDateOfBirth" name="method_getDateOfBirth" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDateOfBirth()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDateOfBirth() : null|string</pre>
+                <p><em>Get the date of birth</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_jsonSerialize" name="method_jsonSerialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">jsonSerialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">jsonSerialize() : mixed</pre>
+                <p><em>Specify data which should be serialized to JSON</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>data which can be serialized by <b>json_encode</b>,
+which is a value of any type other than a resource.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/jsonserializable.jsonserialize.php"><span class="namespace-wrapper">http://php.net/manual/en/jsonserializable.jsonserialize.php</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            5.4.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">ApplicationUpdateRequest.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/models/requests/ApplicationUpdateRequest.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/billythekid.html">\billythekid</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on September 11th, 2018 at 12:30.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/billythekid.html">\billythekid</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1831420782"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1831420782" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1662540372"></a>
+                                <a href="../namespaces/billythekid.html" style="margin-left: 30px; padding-left: 0">billythekid</a>
+            </div>
+            <div id="namespace-1662540372" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1141645381"></a>
+                                <a href="../namespaces/billythekid.v12finance.html" style="margin-left: 30px; padding-left: 0">v12finance</a>
+            </div>
+            <div id="namespace-1141645381" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1872824155"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-1872824155" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1809875676"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.exceptions.html" style="margin-left: 30px; padding-left: 0">exceptions</a>
+            </div>
+            <div id="namespace-1809875676" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.exceptions.InvalidDocumentException.html">InvalidDocumentException</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.exceptions.InvalidTelephoneException.html">InvalidTelephoneException</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.exceptions.InvalidUpdateException.html">InvalidUpdateException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1887884321"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.requests.html" style="margin-left: 30px; padding-left: 0">requests</a>
+            </div>
+            <div id="namespace-1887884321" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.ApplicationRequest.html">ApplicationRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.ApplicationStatusRequest.html">ApplicationStatusRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.ApplicationUpdateRequest.html">ApplicationUpdateRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.DownloadDocumentRequest.html">DownloadDocumentRequest</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.requests.FinanceProductListRequest.html">FinanceProductListRequest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1302308973"></a>
+                                <a href="../namespaces/billythekid.v12finance.models.responses.html" style="margin-left: 30px; padding-left: 0">responses</a>
+            </div>
+            <div id="namespace-1302308973" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.ApplicationStatusResponse.html">ApplicationStatusResponse</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.DownloadDocumentResult.html">DownloadDocumentResult</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.FinanceProductListResponse.html">FinanceProductListResponse</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.responses.ResponseError.html">ResponseError</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.Customer.html">Customer</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.FinanceProduct.html">FinanceProduct</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.Order.html">Order</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.OrderLine.html">OrderLine</a></li>
+                                                    <li class="class"><a href="../classes/billythekid.v12finance.models.Retailer.html">Retailer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/billythekid.v12finance.V12FinanceClient.html">V12FinanceClient</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/billythekid.v12finance.models.html">\billythekid\v12finance\models</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\billythekid\v12finance\models</small>FinanceProduct</h1>
+                    <p><em>Class FinanceProduct</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setApr" class="">setApr()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setCalculationFactor" class="">setCalculationFactor()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setDeferredPeriod" class="">setDeferredPeriod()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setDescription" class="">setDescription()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setDocumentFee" class="">setDocumentFee()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setDocumentFeeCollectionMonth" class="">setDocumentFeeCollectionMonth()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setDocumentFeeMaximum" class="">setDocumentFeeMaximum()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setDocumentFeeMinimum" class="">setDocumentFeeMinimum()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setMaxLoan" class="">setMaxLoan()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setMinLoan" class="">setMinLoan()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setMonthlyRate" class="">setMonthlyRate()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setMonths" class="">setMonths()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setName" class="">setName()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setOptionPeriod" class="">setOptionPeriod()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setProductGuid" class="">setProductGuid()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setProductId" class="">setProductId()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setServiceFee" class="">setServiceFee()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_setTag" class="">setTag()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getApr" class="">getApr()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getCalculationFactor" class="">getCalculationFactor()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getDeferredPeriod" class="">getDeferredPeriod()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getDescription" class="">getDescription()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getDocumentFee" class="">getDocumentFee()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getDocumentFeeCollectionMonth" class="">getDocumentFeeCollectionMonth()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getDocumentFeeMaximum" class="">getDocumentFeeMaximum()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getDocumentFeeMinimum" class="">getDocumentFeeMinimum()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getMaxLoan" class="">getMaxLoan()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getMinLoan" class="">getMinLoan()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getMonthlyRate" class="">getMonthlyRate()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getMonths" class="">getMonths()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getName" class="">getName()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getOptionPeriod" class="">getOptionPeriod()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getProductGuid" class="">getProductGuid()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getProductId" class="">getProductId()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getServiceFee" class="">getServiceFee()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_getTag" class="">getTag()</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#method_jsonSerialize" class="">jsonSerialize()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_apr" class="">$apr</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_calculationFactor" class="">$calculationFactor</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_deferredPeriod" class="">$deferredPeriod</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_description" class="">$description</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_documentFee" class="">$documentFee</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_documentFeeCollectionMonth" class="">$documentFeeCollectionMonth</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_documentFeeMaximum" class="">$documentFeeMaximum</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_documentFeeMinimum" class="">$documentFeeMinimum</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_maxLoan" class="">$maxLoan</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_minLoan" class="">$minLoan</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_monthlyRate" class="">$monthlyRate</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_months" class="">$months</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_name" class="">$name</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_optionPeriod" class="">$optionPeriod</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_productGuid" class="">$productGuid</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_productId" class="">$productId</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_serviceFee" class="">$serviceFee</a><br />
+                                                                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html#property_tag" class="">$tag</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/models.FinanceProduct.html"><div class="path-wrapper">models/FinanceProduct.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">v12finance\models</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\billythekid\v12finance\models\FinanceProduct</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href=""><div class="namespace-wrapper"></div></a></dd>
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_apr" name="property_apr" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$apr</h3>
+                <pre class="signature">$apr : float</pre>
+                <p><em>APR rate</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_calculationFactor" name="property_calculationFactor" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$calculationFactor</h3>
+                <pre class="signature">$calculationFactor : float</pre>
+                <p><em>Calculation factor</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_deferredPeriod" name="property_deferredPeriod" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$deferredPeriod</h3>
+                <pre class="signature">$deferredPeriod : integer</pre>
+                <p><em>Deferred period (months)</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_description" name="property_description" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$description</h3>
+                <pre class="signature">$description : string</pre>
+                <p><em>Product description</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_documentFee" name="property_documentFee" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$documentFee</h3>
+                <pre class="signature">$documentFee : float</pre>
+                <p><em>Document fee</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_documentFeeCollectionMonth" name="property_documentFeeCollectionMonth" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$documentFeeCollectionMonth</h3>
+                <pre class="signature">$documentFeeCollectionMonth : integer</pre>
+                <p><em>Document fee collection month</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_documentFeeMaximum" name="property_documentFeeMaximum" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$documentFeeMaximum</h3>
+                <pre class="signature">$documentFeeMaximum : float</pre>
+                <p><em>Maximum document fee</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_documentFeeMinimum" name="property_documentFeeMinimum" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$documentFeeMinimum</h3>
+                <pre class="signature">$documentFeeMinimum : float</pre>
+                <p><em>Minimum document fee</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_maxLoan" name="property_maxLoan" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$maxLoan</h3>
+                <pre class="signature">$maxLoan : float</pre>
+                <p><em>Maximum loan amount that this product is valid for</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_minLoan" name="property_minLoan" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$minLoan</h3>
+                <pre class="signature">$minLoan : float</pre>
+                <p><em>Minimum loan amount that this product is valid for</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_monthlyRate" name="property_monthlyRate" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$monthlyRate</h3>
+                <pre class="signature">$monthlyRate : float</pre>
+                <p><em>Monthly rate</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_months" name="property_months" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$months</h3>
+                <pre class="signature">$months : integer</pre>
+                <p><em>Months</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_name" name="property_name" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$name</h3>
+                <pre class="signature">$name : string</pre>
+                <p><em>Product name</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_optionPeriod" name="property_optionPeriod" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$optionPeriod</h3>
+                <pre class="signature">$optionPeriod : integer</pre>
+                <p><em>Option period</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_productGuid" name="property_productGuid" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$productGuid</h3>
+                <pre class="signature">$productGuid : string</pre>
+                <p><em>Product GUID</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_productId" name="property_productId" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$productId</h3>
+                <pre class="signature">$productId : float</pre>
+                <p><em>Product ID</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_serviceFee" name="property_serviceFee" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$serviceFee</h3>
+                <pre class="signature">$serviceFee : float</pre>
+                <p><em>Service fee</em></p>
+                
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_tag" name="property_tag" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$tag</h3>
+                <pre class="signature">$tag : string</pre>
+                <p><em>Tag</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setApr" name="method_setApr" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setApr()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setApr(float  <span class="argument">$apr</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the APR</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$apr </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCalculationFactor" name="method_setCalculationFactor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setCalculationFactor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCalculationFactor(float  <span class="argument">$calculationFactor</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the calculation factor</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$calculationFactor </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDeferredPeriod" name="method_setDeferredPeriod" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDeferredPeriod()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDeferredPeriod(integer  <span class="argument">$deferredPeriod</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the deferred period</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$deferredPeriod </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDescription" name="method_setDescription" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDescription()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDescription(string  <span class="argument">$description</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the product description</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$description </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDocumentFee" name="method_setDocumentFee" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDocumentFee()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDocumentFee(float  <span class="argument">$documentFee</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the document fee</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$documentFee </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDocumentFeeCollectionMonth" name="method_setDocumentFeeCollectionMonth" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDocumentFeeCollectionMonth()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDocumentFeeCollectionMonth(integer  <span class="argument">$documentFeeCollectionMonth</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the document fee collection month</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$documentFeeCollectionMonth </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDocumentFeeMaximum" name="method_setDocumentFeeMaximum" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDocumentFeeMaximum()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDocumentFeeMaximum(float  <span class="argument">$documentFeeMaximum</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the maximum document fee</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$documentFeeMaximum </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDocumentFeeMinimum" name="method_setDocumentFeeMinimum" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDocumentFeeMinimum()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDocumentFeeMinimum(float  <span class="argument">$documentFeeMinimum</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the minimum document fee</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$documentFeeMinimum </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setMaxLoan" name="method_setMaxLoan" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setMaxLoan()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setMaxLoan(float  <span class="argument">$maxLoan</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the maximum loan amount</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$maxLoan </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setMinLoan" name="method_setMinLoan" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setMinLoan()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setMinLoan(float  <span class="argument">$minLoan</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the minimum loan amount</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$minLoan </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setMonthlyRate" name="method_setMonthlyRate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setMonthlyRate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setMonthlyRate(integer  <span class="argument">$monthlyRate</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the monthly rate</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$monthlyRate </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setMonths" name="method_setMonths" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setMonths()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setMonths(integer  <span class="argument">$months</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the months</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$months </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setName" name="method_setName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setName(string  <span class="argument">$name</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setOptionPeriod" name="method_setOptionPeriod" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setOptionPeriod()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setOptionPeriod(integer  <span class="argument">$optionPeriod</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the option period</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$optionPeriod </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setProductGuid" name="method_setProductGuid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setProductGuid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setProductGuid(string  <span class="argument">$productGuid</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the GUID</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$productGuid </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setProductId" name="method_setProductId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setProductId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setProductId(integer  <span class="argument">$productId</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the ID</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$productId </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setServiceFee" name="method_setServiceFee" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setServiceFee()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setServiceFee(integer  <span class="argument">$serviceFee</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set teh service fee</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$serviceFee </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTag" name="method_setTag" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTag()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTag(string  <span class="argument">$tag</span>) : \billythekid\v12finance\models\FinanceProduct</pre>
+                <p><em>Set the tag</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tag </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/billythekid.v12finance.models.FinanceProduct.html">\billythekid\v12finance\models\FinanceProduct</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getApr" name="method_getApr" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getApr()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getApr() : float</pre>
+                <p><em>Get the APR</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCalculationFactor" name="method_getCalculationFactor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCalculationFactor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCalculationFactor() : float</pre>
+                <p><em>Get the calculation factor</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDeferredPeriod" name="method_getDeferredPeriod" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDeferredPeriod()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDeferredPeriod() : integer</pre>
+                <p><em>Get the deferred period</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDescription" name="method_getDescription" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDescription()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDescription() : string</pre>
+                <p><em>Get the description</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDocumentFee" name="method_getDocumentFee" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDocumentFee()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDocumentFee() : float</pre>
+                <p><em>Get the document fee</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDocumentFeeCollectionMonth" name="method_getDocumentFeeCollectionMonth" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDocumentFeeCollectionMonth()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDocumentFeeCollectionMonth() : integer</pre>
+                <p><em>Get the document fee collection month</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDocumentFeeMaximum" name="method_getDocumentFeeMaximum" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDocumentFeeMaximum()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDocumentFeeMaximum() : integer</pre>
+                <p><em>Get the maximum document fee</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDocumentFeeMinimum" name="method_getDocumentFeeMinimum" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDocumentFeeMinimum()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDocumentFeeMinimum() : integer</pre>
+                <p><em>Get the minimum document fee</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMaxLoan" name="method_getMaxLoan" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMaxLoan()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMaxLoan() : float</pre>
+                <p><em>Get the maximum loan amount</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMinLoan" name="method_getMinLoan" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMinLoan()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMinLoan() : float</pre>
+                <p><em>Get the minimum loan amount</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMonthlyRate" name="method_getMonthlyRate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMonthlyRate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMonthlyRate() : float</pre>
+                <p><em>Get the monthly rate</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMonths" name="method_getMonths" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMonths()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMonths() : integer</pre>
+                <p><em>Get the months</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getName" name="method_getName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getName() : string</pre>
+                <p><em>Get the name</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getOptionPeriod" name="method_getOptionPeriod" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getOptionPeriod()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getOptionPeriod() : integer</pre>
+                <p><em>Get the option period</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getProductGuid" name="method_getProductGuid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getProductGuid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getProductGuid() : string</pre>
+                <p><em>Get the GUID</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getProductId" name="method_getProductId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getProductId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getProductId() : integer</pre>
+                <p><em>Get the ID</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getServiceFee" name="method_getServiceFee" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getServiceFee()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getServiceFee() : integer</pre>
+                <p><em>Get the service fee</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTag" name="method_getTag" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTag()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTag() : string</pre>
+                <p><em>Get the tag</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_jsonSerialize" name="method_jsonSerialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">jsonSerialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">jsonSerialize() : mixed</pre>
+                <p><em>Specify data which should be serialized to JSON</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>data which can be serialized by <b>json_encode</b>,
+which is a value of any type other than a resource.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/jsonserializable.jsonserialize.php"><span class="namespace-wrapper">http://php.net/manual/en/jsonserializable.jsonserialize.php</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            5.4.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">FinanceProduct.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/models/FinanceProduct.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/billythekid.html">\billythekid</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on September 11th, 2018 at 12:30.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
