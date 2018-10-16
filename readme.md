@@ -38,7 +38,7 @@ $products = $client->getRetailerFinanceProducts($productListRequest);
 /** @var FinanceProduct $product */
 $product = $products->getFinanceProducts()[0];
 
-echo json_encode($product, 128) . "\n\n";
+echo json_encode($product, JSON_PRETTY_PRINT) . "\n\n";
 $customer = (new Customer())
     ->setEmailAddress($faker->email)
     ->setFirstName($faker->firstName)
