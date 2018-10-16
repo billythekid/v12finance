@@ -2,7 +2,7 @@ This project is on a bit of a hiatus as the client I was building it for decided
 
 Feel free to PR the few missing classes or I'll get to it as a side-project eventually. 
 
-[Here are the API docs](https://billythekid.github.io/v12finance/docs/namespaces/billythekid.v12finance.html)
+[Here are the API docs](https://billythekid.github.io/v12finance)
 
 Here's some example code for how to use this
 
